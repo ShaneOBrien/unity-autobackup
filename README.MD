@@ -10,6 +10,9 @@ Please help make this better!
 To Do
 ================
 Set custom times on editor window
+
 Set custom path
+
 Multiple backups
+
 Set number of backups
