@@ -7,12 +7,16 @@ We've all had those days where we just never hit ctrl-s and saved our scene, the
 
 Please help make this better!
 
-To Do
+Features
 ================
-Set custom times on editor window
-
-Set custom path
-
-Multiple backups
-
-Set number of backups
+Disable/Enable AutoBackup (disabled by default)  
+Customise the time between saves  
+Customise the prefix of the backed up file  
+Customise the path to backup to  
+Makes sure the directory exists before saving, creates a new folder if it doesn't  
+Added incremental backups  
+Customisable number of backups  
+Added ability to save assets  
+Can save when you click the play button  
+Makes sure you give a new scene a name before backing up  
+Can save settings or restore them to default 
