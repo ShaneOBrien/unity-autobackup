@@ -92,10 +92,13 @@ public class AutoBackup : EditorWindow
 		{
 			Directory.CreateDirectory(pathToSaveScenesTo);
 			EditorApplication.SaveScene(pathToSaveScenesTo + filename, true);
+			EditorApplication.SaveScene();
+
 		}
 		else
 		{
 			EditorApplication.SaveScene(pathToSaveScenesTo + filename, true);
+			EditorApplication.SaveScene();
 		}
 
 		if (saveAssets)
