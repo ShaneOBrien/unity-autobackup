@@ -3,6 +3,10 @@ using UnityEditor;
 using System.IO;
 public class AutoBackup : EditorWindow
 {
+
+	Vector2 scrollPos;
+
+	//prompt before save?
 	static bool enable = false;
 	static float saveTime;
 	static float nextSave = 0f;
@@ -108,10 +112,14 @@ public class AutoBackup : EditorWindow
 
 		Debug.Log("Saved Scene");
 
+		
+
 	}
 
 	void OnGUI()
 	{
+		EditorGUILayout.BeginVertical();
+		scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 		GUILayout.Label("AutoBackup Settings", EditorStyles.boldLabel);
 
 		GUILayout.Label("");
@@ -182,6 +190,8 @@ public class AutoBackup : EditorWindow
 			RestoreDefaultSettings();
 		}
 		GUILayout.EndHorizontal();
+		EditorGUILayout.EndScrollView();
+		EditorGUILayout.BeginVertical();
 		this.Repaint();
 	}
 
