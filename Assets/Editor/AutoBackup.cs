@@ -73,6 +73,11 @@ public class AutoBackup : EditorWindow
 	{
 		string[] path = EditorApplication.currentScene.Split(char.Parse("/"));
 
+		if (!Directory.Exists(pathToSaveScenesTo))
+		{
+			Directory.CreateDirectory(pathToSaveScenesTo);
+		}
+
 		if (currentSaveNumber < numberOfSaves)
 		{
 			currentSaveNumber += 1;
@@ -87,17 +92,11 @@ public class AutoBackup : EditorWindow
 
 		Debug.Log(path[path.Length - 1]);
 
-		if (Directory.Exists(pathToSaveScenesTo) && filename == incrementedPrefix)
+		if (filename == incrementedPrefix)
 		{
-			EditorApplication.SaveScene();
-			currentSaveNumber = 0;
-		}
-		else if (!Directory.Exists(pathToSaveScenesTo) && filename == incrementedPrefix)
-		{
-			Directory.CreateDirectory(pathToSaveScenesTo);
 			EditorApplication.SaveScene(pathToSaveScenesTo + filename, true);
 			EditorApplication.SaveScene();
-
+			currentSaveNumber = 0;
 		}
 		else
 		{
@@ -204,6 +203,10 @@ public class AutoBackup : EditorWindow
 		EditorPrefs.SetInt("numberOfSaves", numberOfSaves);
 		EditorPrefs.SetBool("saveAssets", saveAssets);
 		EditorPrefs.SetBool("saveOnPlay", saveOnPlay);
+		if (nextSave > saveTime)
+		{
+			nextSave = saveTime;
+		}
 	}
 
 	public void RestoreDefaultSettings()
